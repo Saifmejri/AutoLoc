@@ -1,14 +1,12 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import tn.esprit.autoloc.domain.enums.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "equipement")
@@ -16,8 +14,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 public class Equipement {
 
     @Id
@@ -25,4 +21,7 @@ public class Equipement {
     private Long id;
 
     private String libelle;
+
+    @ManyToMany(mappedBy = "equipements", cascade = CascadeType.ALL)
+    private Set<Vehicule> vehicules;
 }

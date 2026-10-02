@@ -1,13 +1,13 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "maintenance")
@@ -27,4 +27,6 @@ public class Maintenance {
 
     private String description;
 
+    @ManyToOne
+    private Vehicule vehicule;
 }

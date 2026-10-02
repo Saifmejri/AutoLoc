@@ -2,11 +2,12 @@ package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
 import tn.esprit.autoloc.domain.enums.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.*;
 
 @Entity
 @Table(name = "employe")
@@ -14,7 +15,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Employe {
 
     @Id
@@ -27,4 +27,7 @@ public class Employe {
 
     @Enumerated(EnumType.STRING)
     private RoleEmploye role;
+
+    @ManyToOne
+    private Agence agence;
 }

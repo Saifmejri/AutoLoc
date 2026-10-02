@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "paiement")
@@ -16,7 +17,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Paiement {
 
     @Id
@@ -30,4 +30,6 @@ public class Paiement {
     @Enumerated(EnumType.STRING)
     private ModePaiement modePaiement;
 
+    @ManyToOne
+    private Contrat contrat;
 }

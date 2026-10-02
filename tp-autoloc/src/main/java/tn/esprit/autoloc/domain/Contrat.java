@@ -1,6 +1,6 @@
 package tn.esprit.autoloc.domain;
+
 import jakarta.persistence.*;
-import tn.esprit.autoloc.domain.enums.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "contrat")
@@ -15,8 +16,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 public class Contrat {
 
     @Id
@@ -29,4 +28,9 @@ public class Contrat {
 
     private boolean valide = false;
 
+    @OneToOne(mappedBy = "contrat")
+    private Reservation reservation;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contrat")
+    private Set<Paiement> paiements;
 }

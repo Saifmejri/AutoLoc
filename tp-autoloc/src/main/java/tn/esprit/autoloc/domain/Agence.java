@@ -1,10 +1,12 @@
 package tn.esprit.autoloc.domain;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.*;
 
 @Entity
 @Table(name = "agence")
@@ -12,7 +14,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Agence {
 
     @Id
@@ -27,4 +28,9 @@ public class Agence {
 
     private String telephone;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agence")
+    private Set<Employe> employes;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agence")
+    private Set<Vehicule> vehicules;
 }

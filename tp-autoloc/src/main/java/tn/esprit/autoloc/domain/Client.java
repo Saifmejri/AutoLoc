@@ -1,13 +1,13 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "client")
@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Client {
 
     @Id
@@ -34,4 +33,6 @@ public class Client {
 
     private LocalDate dateInscription;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    private Set<Reservation> reservations;
 }
